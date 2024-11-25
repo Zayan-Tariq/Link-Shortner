@@ -1,12 +1,9 @@
-const fs = require('fs');
-const fsPromises = require('fs').promises;
-const path = require('path');
 const express = require('express');
 const app = express();
 const routerurl = require('./routes/routerurl.js');
 const connectToMongoDB = require('./connect.js');
 
-
+// Zayan is STUPID :>
 
 const PORT = process.env.PORT || 5000;
 
