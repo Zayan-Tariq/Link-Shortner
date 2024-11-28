@@ -25,7 +25,7 @@ const HandleGeneratedUrl = async (req, res) => {
         return res.json({ id: shortID });
     } catch (err) {
         // Handle any errors that occur during the URL creation process
-        console.error(err);
+        console.error('The error is ', err);
         return res.status(500).json({ error: 'Failed to generate the URL' });
     }
 };
