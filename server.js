@@ -14,11 +14,32 @@ const PORT = process.env.PORT || 5000;
 
 connectToMongoDB("mongodb://localhost:27017/Link-Shortner").then(() => {console.log('Connected to mongoDb successfully')})
 
-app.use(express.json())
+app.set('view engine', 'ejs')
+app.set('views', path.resolve('./views'))
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }))
+
+app.get('/test', async (req, res) => {
+    const allUrls = await URL.find({})
+    res.render('home', {urls: allUrls})
+    // res.end(`<html>
+    //         <head></head>
+    //         <body>
+    //             <ol>
+    //                 ${allUrls.map(
+    //                     (url) =>
+    //                         `<li> ${url.shortId} - ${url.redirectURL} - ${url.visitHistory.length} </li>`
+    //                 )
+    //                 .join("")}
+    //             </ol>
+    //         </body>
+    //          </html>`)
+})
 
 app.use('/url', routerurl); 
 
-app.get('/:shortId', async (req, res) => {
+app.get('/url/:shortId', async (req, res) => {
     const shortId = req.params.shortId;
     const entry = await URL.findOneAndUpdate({
         shortId

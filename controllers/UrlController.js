@@ -6,7 +6,9 @@ const HandleGeneratedUrl = async (req, res) => {
 
     // Check if URL is provided
     if (!body.url) {
-        return res.status(400).json({ 'error': 'URL is required!' });
+        return res.status(400).render('home', {
+            'error:': 'URL is required!'
+        });
     }
 
     // Generate short ID
@@ -22,7 +24,10 @@ const HandleGeneratedUrl = async (req, res) => {
 
         // Return the short ID to the client
         console.log("Working Fine")
-        return res.json({ id: shortID });
+        return res.render('home', {
+            id: shortID
+        })
+      
     } catch (err) {
         // Handle any errors that occur during the URL creation process
         console.error('The error is ', err);

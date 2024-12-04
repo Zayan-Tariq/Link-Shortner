@@ -1,10 +1,10 @@
 This is a linkshortner created using ExpressJS
 
-Use ThunderClient or Postman to send a POST request with following parameters in the body:
+Run the Development server using node js's "node server.js" command or use nodemon
 
-{
-    "url": "Insert_URl_Here"
-}
+Enter the url into the field and click generate.
 
-Paste the id at the end of Localhost:(Port)/(Id here)
+Click on the "Copy" button to copy
+
+
 
